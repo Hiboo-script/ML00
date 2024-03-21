@@ -1,3 +1,4 @@
+#!/Users/porcedduvalentin/miniconda3/envs/42AI-porcedduvalentin/bin python
 import sys
 s = ''
 for w in sys.argv[1:]:
