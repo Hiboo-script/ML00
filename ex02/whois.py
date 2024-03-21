@@ -1,11 +1,12 @@
 #!/Users/porcedduvalentin/miniconda3/envs/42AI-porcedduvalentin/bin python
 import sys
-
+n = 0
 arg = sys.argv
 if (len(arg)==2):
-	if (type(arg[1])==type(1)):
+	try:
+		number = int(arg[1])
 		print('good')
-	else:
+	except:
 		print('error 2')
 elif (len(arg)==1):
 	0
