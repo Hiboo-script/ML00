@@ -3,7 +3,10 @@ import sys
 
 arg = sys.argv
 if (len(arg)==2):
-	print('good !')
+	if (type(arg[1])==type(1)):
+		print('good')
+	else:
+		print('error 2')
 elif (len(arg)==1):
 	0
 else:
