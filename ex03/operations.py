@@ -8,6 +8,9 @@ Example:
 err_modZero = "Remainder : ERROR (modulo by zero)"
 err_divZero = "Quotient ; ERROR (division by zero)"
 
+a = 0
+b = 1
+
 def operations(A,B):
 	print("Sum : " + str(A+B))
 	print("Difference : " + str(A-B))
@@ -22,9 +25,7 @@ def operations(A,B):
 
 if (n_arg==1):
 	0
-elif (n_arg==2) or (n_arg>3):
-	print(globalError)
-else:
+elif (n_arg==3):
 	try:
 		a = int(arg[1])
 		b = int(arg[2])
@@ -32,7 +33,5 @@ else:
 		operations(a,b)
 	except:
 		print(globalError)
-
-# operations(5,10)
-# operations(3,0)
-# operations(7,-8)
+else:
+	print(globalError)
