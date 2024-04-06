@@ -1,4 +1,4 @@
-import string
+from string import punctuation as punct
 
 def analyzer_prompt(u,l,p,s):
 	print("- "+str(u)+" upper letter(s)")
@@ -26,7 +26,7 @@ def text_analyzer(text = ""):
 			up+=1
 		elif (c.islower()):
 			lo+=1
-		elif (c in string.punctuation):
+		elif (c in punct):
 			pu+=1
 		elif (c==" "):
 			sp+=1
