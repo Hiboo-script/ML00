@@ -9,20 +9,21 @@ def analyzer_prompt(u,l,p,s):
 def text_analyzer(text = ""):
 	if(type(text)!=type("s")):
 		print("insertionError : the argument is not a string.")
+		return 0
 	elif (len(text)==0): 
 		text = input("What is the text to analize?\n>> ")
-	else:
-		up = 0
-		lo = 0
-		pu = 0
-		sp = 0
-		for c in text:
-			if (c.isupper()):
-				up+=1
-			elif (c.islower()):
-				lo+=1
-			elif (c in string.punctuation):
-				pu+=1
-			elif (c==" "):
-				sp+=1
-		analyzer_prompt(up,lo,pu,sp)
+	
+	up = 0
+	lo = 0
+	pu = 0
+	sp = 0
+	for c in text:
+		if (c.isupper()):
+			up+=1
+		elif (c.islower()):
+			lo+=1
+		elif (c in string.punctuation):
+			pu+=1
+		elif (c==" "):
+			sp+=1
+	analyzer_prompt(up,lo,pu,sp)
