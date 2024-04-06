@@ -7,6 +7,10 @@ def analyzer_prompt(u,l,p,s):
 	print("- "+str(s)+" space(s)")
 
 def text_analyzer(text = ""):
+	"""
+	This function counts the number of upper characters, 
+	lower characters, punctuation and spaces in a given text.
+	"""
 	if(type(text)!=type("s")):
 		print("insertionError : the argument is not a string.")
 		return None
