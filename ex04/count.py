@@ -9,7 +9,7 @@ def analyzer_prompt(u,l,p,s):
 def text_analyzer(text = ""):
 	if(type(text)!=type("s")):
 		print("insertionError : the argument is not a string.")
-		return 0
+		return None
 	elif (len(text)==0): 
 		text = input("What is the text to analize?\n>> ")
 	
