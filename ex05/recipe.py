@@ -25,13 +25,19 @@ class Book:
 			print(f"- {recipe}")		
 	
 	def recipeDetails(self, name):
-		if self.book[name]:
+		if name in self.book:
 			print(f"details of {name}'s recipe :")
 			recipe = self.book[name]
 			for key, value in recipe.items():
 				print(f"- {key} : {value}")
 		else:
-			print(f"there aren't {name} in this book.")
+			print(f"There aren't {name} in this book.")
+	
+	def deleteRecipe(self, name):
+		if name in self.book:
+			del self.book[name]
+		else:
+			print(f"There aren't {name} in this book.")
 
 
 cookbook = Book()
@@ -46,4 +52,5 @@ cookbook.addRecipe(cake)
 cookbook.addRecipe(salad)
 
 cookbook.printNames()
+cookbook.deleteRecipe('salad')
 cookbook.recipeDetails('salad')
