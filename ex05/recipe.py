@@ -18,7 +18,20 @@ class Book:
 		self.book[recipe.getName()] = recipe.get()
 
 	def print(self):
-		print(self.book)		
+		print(self.book)
+	
+	def printNames(self):
+		for recipe in self.book:
+			print(f"- {recipe}")		
+	
+	def recipeDetails(self, name):
+		if self.book[name]:
+			print(f"details of {name}'s recipe :")
+			recipe = self.book[name]
+			for key, value in recipe.items():
+				print(f"- {key} : {value}")
+		else:
+			print(f"there aren't {name} in this book.")
 
 
 cookbook = Book()
@@ -32,4 +45,5 @@ cookbook.addRecipe(sandwich)
 cookbook.addRecipe(cake)
 cookbook.addRecipe(salad)
 
-cookbook.print()
+cookbook.printNames()
+cookbook.recipeDetails('salad')
