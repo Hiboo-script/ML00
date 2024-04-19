@@ -38,7 +38,50 @@ class Book:
 			del self.book[name]
 		else:
 			print(f"There aren't {name} in this book.")
+		
+	def inputRecipe(self):
+		name = ""
+		ingredient = "cardamona"
+		meal = ""
+		prep_time = 0
+		
+		ingredients = []
+		
+		print("Insert your new recipe :")
+		name = input("\nName of your recipe : \n")
+		if not name:
+			print("voidError : your recipe must be had a name !")
+			return None
+		
+		print("\nIngredients of your recipe : ")
+		while not not ingredient:
+			ingredient=input("- ")
+			if not not ingredient:
+				ingredients.append(ingredient)
+		if not ingredients:
+			print("voidError : number of ingredients must be minimal 1 !")
+			return None
 
+		meal = input("\nWhat are your recipe meal type ? \n")
+		if not meal:
+			print("voidError : your recipe must had a meal type !")
+			return None
+		
+		prep_time = input("\nHow long take your recipe (in minutes) ?\n")
+		if not prep_time:
+			print("voidError : your recipe must had a preparation time !")
+			return None
+		try:
+			prep_time = int(prep_time)
+		except:
+			print("typeError : the preparation time must be a int !")
+			return None
+
+		newRecipe = Recipe(name,ingredients,meal,prep_time)
+		self.addRecipe(newRecipe)
+		
+		print(f"Your new recipe {name} has been added : ")
+		self.recipeDetails(name)
 
 cookbook = Book()
 
@@ -54,3 +97,6 @@ cookbook.addRecipe(salad)
 cookbook.printNames()
 cookbook.deleteRecipe('salad')
 cookbook.recipeDetails('salad')
+
+cookbook.inputRecipe()
+cookbook.printNames()
