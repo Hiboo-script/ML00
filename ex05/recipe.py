@@ -36,6 +36,7 @@ class Book:
 	def deleteRecipe(self, name):
 		if name in self.book:
 			del self.book[name]
+			print(f"Recipe {name} has been deleted !")
 		else:
 			print(f"There aren't {name} in this book.")
 		
@@ -89,14 +90,52 @@ sandwich = Recipe('sandwich',['ham', 'bread', 'cheese', 'tomatoes'],'lunch',10)
 cake = Recipe('cake',['floor', 'sugar', 'eggs'],'dessert',60)
 salad = Recipe('salad',['avocado', 'arugula', 'tomatoes', 'spinach'],'lunch', 15)
 
-
 cookbook.addRecipe(sandwich)
 cookbook.addRecipe(cake)
 cookbook.addRecipe(salad)
 
-cookbook.printNames()
-cookbook.deleteRecipe('salad')
-cookbook.recipeDetails('salad')
+str_start = "Welcome in cookbook python !"
+str_menu = """\nList of available options :
+	1 : Add a recipe
+	2 : Delete a recipe 
+	3 : Print a recipe
+	4 : Print cookbook
+	5 : Quit\n"""
+str_invite = ">> "
+str_errChoice = "errorOption : This option do not exist !"
+str_nameRecipeGet = "Please enter a name of the recipe you want see :"
+str_nameRecipeDel = "Please enter a name of the recipe you want delete :"
+str_close = "\nGood bye !"
+choice = 0
+str_option = ""
 
-cookbook.inputRecipe()
-cookbook.printNames()
+print(str_start)
+print(str_menu)
+while choice!=5:
+	choice = input(str_invite)
+	try:
+		choice = int(choice)
+		if not (choice in set(range(1,6))):
+			print(str_errChoice)
+	except:
+		print(str_errChoice)
+	
+	
+	if choice==1:
+		cookbook.inputRecipe()
+		print(str_menu)
+	elif choice==2:
+		print(str_nameRecipeDel)
+		str_option = input(str_invite)
+		cookbook.deleteRecipe(str_option)
+		print(str_menu)
+	elif choice==3:
+		print(str_nameRecipeGet)
+		str_option = input(str_invite)
+		cookbook.recipeDetails(str_option)
+		print(str_menu)
+	elif choice==4:
+		cookbook.printNames()
+		print(str_menu)
+	elif choice==5:
+		print(str_close)
