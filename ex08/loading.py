@@ -1,12 +1,37 @@
 import time
 import sys
+import os
+
+if os.name == 'nt':
+    import msvcrt
+    import ctypes
+
+    class _CursorInfo(ctypes.Structure):
+        _fields_ = [("size", ctypes.c_int),
+                    ("visible", ctypes.c_byte)]
 
 def hide_c():
-	sys.stdout.write("\033[?25l")
-	sys.stdout.flush()
+    if os.name == 'nt':
+        ci = _CursorInfo()
+        handle = ctypes.windll.kernel32.GetStdHandle(-11)
+        ctypes.windll.kernel32.GetConsoleCursorInfo(handle, ctypes.byref(ci))
+        ci.visible = False
+        ctypes.windll.kernel32.SetConsoleCursorInfo(handle, ctypes.byref(ci))
+    elif os.name == 'posix':
+        sys.stdout.write("\033[?25l")
+        sys.stdout.flush()
+
 def show_c():
-	sys.stdout.write("\033[?25h")
-	sys.stdout.flush()
+    if os.name == 'nt':
+        ci = _CursorInfo()
+        handle = ctypes.windll.kernel32.GetStdHandle(-11)
+        ctypes.windll.kernel32.GetConsoleCursorInfo(handle, ctypes.byref(ci))
+        ci.visible = True
+        ctypes.windll.kernel32.SetConsoleCursorInfo(handle, ctypes.byref(ci))
+    elif os.name == 'posix':
+        sys.stdout.write("\033[?25h")
+        sys.stdout.flush()
+
 
 class ft_progress:
 	def __init__(self,lst):
@@ -36,13 +61,12 @@ class ft_progress:
 
 	def actual_pourcent(self):
 		return ((self.n*1.)/self.lim)*100
-	
 
-listy = range(1000)
+listy = range(3333)
 ret = 0
 
 for x in ft_progress(listy):
-	ret += (x+3)%5
-	time.sleep(0.01)
+	ret += x
+	time.sleep(0.005)
 print()
 print(ret)
