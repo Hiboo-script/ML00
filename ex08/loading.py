@@ -57,12 +57,14 @@ class ft_progress:
 			return x
 		else:
 			show_c()
+			print()
+			print('...',end="\r")
 			raise StopIteration
 
 	def actual_pourcent(self):
 		return ((self.n*1.)/self.lim)*100
 
-listy = range(3333)
+listy = range(500)
 ret = 0
 
 for x in ft_progress(listy):
